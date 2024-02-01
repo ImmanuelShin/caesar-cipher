@@ -56,11 +56,12 @@ For users who want to import and use the Caesar Salad functions in their project
 
 Feel free to incorporate these functions into your own projects for Caesar cipher operations.
 
-#### Run Test
+## Tests
 
-pytest tests/test_caesar.py
+To run the tests for the Caesar Salad project, use the following command:
 
-##### Note
+```pytest tests/test_caesar.py```
 
-crack function not built to handle non words (i.e 'aaa', 'dfasdf asdfasd asdfasd') when deciding most probable decryption.  
-Instead, an unused list (all_candidates on line 57) exists in case human eyes are needed.
+### Note
+
+The `crack` function is not designed to effectively handle non-words, such as sequences like 'aaa' or phrases like 'dfasdf asdfasd asdfasd', when determining the most probable decryption. However, to accommodate potential future needs for analyzing such cases, an unused list (all_candidates on line 57) has been included in the code. This list can be leveraged for further examination or modification if needed.

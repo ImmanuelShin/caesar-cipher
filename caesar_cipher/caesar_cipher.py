@@ -99,8 +99,7 @@ def calculate_similarity_score(decrypted_text, corpus):
     words_decrypted = preprocess_text(decrypted_text)
     overlap_words = [word for word in words_decrypted if word in corpus]
     expected_word_count = len(words_decrypted)
-    similarity_score = len(overlap_words) / \
-        expected_word_count if expected_word_count > 0 else 0
+    similarity_score = len(overlap_words) / expected_word_count if expected_word_count > 0 else 0
     return similarity_score
 
 def caesar_cipher_driver():
