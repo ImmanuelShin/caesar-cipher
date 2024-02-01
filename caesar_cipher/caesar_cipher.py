@@ -70,7 +70,7 @@ def crack(crypt):
         similarity_score = calculate_similarity_score(cracked_text, corpus)
         if similarity_score > best_candidate[1]:
             best_candidate = (cracked_text, similarity_score, shift)
-        all_candidates.append(cracked_text, similarity_score, shift)
+        all_candidates.append((cracked_text, similarity_score, shift))
     return best_candidate
 
 def preprocess_text(text):
@@ -103,3 +103,45 @@ def calculate_similarity_score(decrypted_text, corpus):
         expected_word_count if expected_word_count > 0 else 0
     return similarity_score
 
+def caesar_cipher_driver():
+    """
+    Caesar Cipher Driver Function
+
+    Prompts the user to choose between encryption, decryption, and cracking using the Caesar cipher.
+    Takes user input and calls the corresponding functions, displaying the results.
+
+    Options:
+    1. Encrypt
+    2. Decrypt
+    3. Crack
+
+    Returns:
+    None
+    """
+    choice = input("Choose an option:\n1. Encrypt\n2. Decrypt\n3. Crack\n")
+
+    if choice == '1':
+        plaintext = input("Enter the text to encrypt: ")
+        shift = int(input("Enter the shift value: "))
+        encrypted_text = encrypt(plaintext, shift)
+        print("Encrypted Text:", encrypted_text)
+
+    elif choice == '2':
+        ciphertext = input("Enter the text to decrypt: ")
+        shift = int(input("Enter the shift value: "))
+        decrypted_text = decrypt(ciphertext, shift)
+        print("Decrypted Text:", decrypted_text)
+
+    elif choice == '3':
+        ciphertext = input("Enter the text to crack: ")
+        result = crack(ciphertext)
+        decrypted_text, similarity_score, shift = result
+        print("Decrypted Text:", decrypted_text)
+        print("Shift Amount:", shift)
+        print("Assurance Score: {:.2%}".format(similarity_score))
+
+    else:
+        print("Invalid choice. Please choose 1, 2, or 3.")
+
+if __name__ == "__main__":
+    caesar_cipher_driver()
